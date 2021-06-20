@@ -1,6 +1,8 @@
 to launch navigate to folder and type:
 
-./authenticate-cpp-sample "192.168.1.200" 8093 11 "/dev/ttyACM0"
+
+cd  /home/pi/Uri/Intel/clone5/RealSenseID/samples/cpp/build
+./authenticate-cpp-sample "192.168.0.64" 8093 11 "/dev/ttyACM0"
 
 "192.168.1.200"    - ip
 8093  - port

@@ -41,12 +41,15 @@ public:
           {
                 std::cout << "Authenticated " << user_id << std::endl;
                auto futureFunction= std::async(sendTcp,user_id);
+             
+               
 
           } 
            if (status == RealSenseID::AuthenticateStatus::MaskDetectedInHighSecurity)
            {
-                std::cout << "Authenticated " << user_id << std::endl;
-                auto futureFunction= std::async(sendTcp,user_id);
+                std::cout << "Authenticated masked" << user_id << std::endl;
+                auto futureFunction= std::async(sendTcp,"RealSenseID::AuthenticateStatus::MaskDetectedInHighSecurity");
+               
            }
 
        
@@ -259,6 +262,14 @@ while(true)
 		std::cout << "usbPort " << usbPort << std::endl;
        
     }
+    else
+    {
+        strcpy(ipOmni,"192.168.0.64") ;
+        portOmni=8093 ;
+        strcpy(readerOmni,"11") ;
+        strcpy(usbPort,"/dev/ttyACM0");
+    }
+    
    
 
     //sendTcp("uri");
