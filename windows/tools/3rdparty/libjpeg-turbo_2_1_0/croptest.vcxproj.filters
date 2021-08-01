@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Elpas\e4ext-intel-realsense\windows\tools\CMakeFiles\1f640c7b7c907a43038469eee2a65b27\croptest.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Elpas\e4ext-intel-realsense\windows\3rdparty\libjpeg-turbo_2_1_0\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\tools\3rdparty\libjpeg-turbo_2_1_0\CMakeFiles\croptest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{23BD66AA-90EA-37E6-91B7-81439685FAC7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

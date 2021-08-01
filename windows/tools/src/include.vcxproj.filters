@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Elpas\e4ext-intel-realsense\windows\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\AndroidSerialConfig.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\AuthFaceprintsExtractionCallback.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\AuthenticateStatus.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\AuthenticationCallback.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\DeviceConfig.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\DeviceController.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\DiscoverDevices.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\EnrollFaceprintsExtractionCallback.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\EnrollStatus.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\EnrollmentCallback.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\FaceAuthenticator.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\FacePose.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\FaceRect.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\Faceprints.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\FaceprintsDefines.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\FwUpdater.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\Logging.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\MatchResultHost.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\Preview.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\RealSenseIDExports.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\SerialConfig.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\SignatureCallback.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\Status.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\UserFaceprints.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Elpas\e4ext-intel-realsense\windows\include\RealSenseID\Version.h">
+      <Filter>Header Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{1C904C56-7993-3FA6-8FE6-D88623D93587}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

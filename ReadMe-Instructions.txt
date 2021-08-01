@@ -1,7 +1,23 @@
 to launch navigate to folder and type:
-
-
 cd  /home/pi/Uri/Intel/clone5/RealSenseID/samples/cpp/build
+
+
+
+How to compile code on windows:
+----------------------------------------------
+you can see https://github.com/IntelRealSense/RealSenseID
+*extract RealSenseID-v.21.0.zip
+*in cmd  :  cd C:\Elpas\e4ext-intel-realsense\try2\RealSenseID-v.21.0\samples
+*cmake .. -DRSID_PREVIEW=1  
+*open project C:\Elpas\e4ext-intel-realsense\try2\RealSenseID-v.21.0\tools\ALL_BUILD.vcxproj
+*rsid-viewer set as startup project and run
+
+
+*cd C:\Elpas\e4ext-intel-realsense\try2\RealSenseID-v.21.0\samples\tools
+*cmake .. -DRSID_PREVIEW=1  
+
+
+
 ./authenticate-cpp-sample "192.168.0.64" 8093 11 "/dev/ttyACM0"
 
 "192.168.1.200"    - ip
@@ -23,5 +39,18 @@ cd  /home/pi/Uri/Intel/clone5/RealSenseID/build/bin
 
 
 *when exported to new PI need to copy  librsid.so  
+
+
+to update firmware:
+----------------------------------------
+in directory:
+pi@raspberrypi:~/Uri/Intel/clone6/RealSenseID-v.21.0/build/bin $ 
+
+./rsid-fw-update --file "/home/pi/Uri/Intel/clone6/RealSenseID-v.21.0/build/bin/F450_3.1.0.29_SKU1_SIGNED.bin" --port COM3 --force-version
+
+
+
+./rsid-fw-update --file "/home/pi/Uri/Intel/clone6/RealSenseID-v.21.0/build/bin/F450_4.0.0.37_SKU1_SIGNED.bin" --port  "/dev/ttyACM0"
+
 
 
