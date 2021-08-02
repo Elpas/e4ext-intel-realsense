@@ -7,7 +7,7 @@ How to compile code on windows:
 ----------------------------------------------
 you can see https://github.com/IntelRealSense/RealSenseID
 *extract RealSenseID-v.21.0.zip
-*in cmd  :  cd C:\Elpas\e4ext-intel-realsense\try2\RealSenseID-v.21.0\samples
+*in cmd  :  cd C:\Elpas\e4ext-intel-realsense\WINDOWS\tools 
 *cmake .. -DRSID_PREVIEW=1  
 *open project C:\Elpas\e4ext-intel-realsense\try2\RealSenseID-v.21.0\tools\ALL_BUILD.vcxproj
 *rsid-viewer set as startup project and run
