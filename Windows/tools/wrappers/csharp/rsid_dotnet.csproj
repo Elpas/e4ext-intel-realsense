@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{398D5FC8-7F7F-30D9-979E-D0CB5140B1D4}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>rsid_dotnet</ProjectName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <OutputPath>C:\Elpas\e4ext-intel-realsense\Windows\tools\bin\Debug\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <PlatformToolset>v142</PlatformToolset>
+    <AssemblyName>rsid_dotnet_debug</AssemblyName>
+    <DebugType>full</DebugType>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <Optimize>false</Optimize>
+    <WarningLevel>3</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <OutputPath>C:\Elpas\e4ext-intel-realsense\Windows\tools\bin\Release\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <PlatformToolset>v142</PlatformToolset>
+    <AssemblyName>rsid_dotnet</AssemblyName>
+    <DebugType>none</DebugType>
+    <DefineConstants></DefineConstants>
+    <ErrorReport>queue</ErrorReport>
+    <Optimize>true</Optimize>
+    <WarningLevel>1</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <OutputPath>C:\Elpas\e4ext-intel-realsense\Windows\tools\bin\MinSizeRel\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <PlatformToolset>v142</PlatformToolset>
+    <AssemblyName>rsid_dotnet</AssemblyName>
+    <DebugType>none</DebugType>
+    <DefineConstants></DefineConstants>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <OutputPath>C:\Elpas\e4ext-intel-realsense\Windows\tools\bin\RelWithDebInfo\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <PlatformToolset>v142</PlatformToolset>
+    <AssemblyName>rsid_dotnet</AssemblyName>
+    <DebugType>full</DebugType>
+    <DefineConstants></DefineConstants>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.CSharp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.CSharp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemGroup>
+    <None Include="C:\Elpas\e4ext-intel-realsense\Windows\wrappers\csharp\CMakeLists.txt">
+      <Link>CMakeLists.txt</Link>
+    </None>
+  </ItemGroup>
+  <Target Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"
+    Name="CustomCommand_Debug_8e943cd798b4f9a81a7e9d4538b3414c"
+    Inputs="C:/Elpas/e4ext-intel-realsense/Windows/wrappers/csharp/CMakeLists.txt;C:\Elpas\e4ext-intel-realsense\Windows\tools\CMakeFiles\3.20.2\CMakeCSharpCompiler.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeCSharpInformation.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CSharpUtilities.cmake"
+    Outputs="C:\Elpas\e4ext-intel-realsense\Windows\tools\wrappers\csharp\CMakeFiles\generate.stamp">
+    <Exec Command="echo Building Custom Rule C:/Elpas/e4ext-intel-realsense/Windows/wrappers/csharp/CMakeLists.txt" />
+    <Exec Command="setlocal&#10;&quot;C:\Program Files\CMake\bin\cmake.exe&quot; -SC:/Elpas/e4ext-intel-realsense/Windows -BC:/Elpas/e4ext-intel-realsense/Windows/tools --check-stamp-file C:/Elpas/e4ext-intel-realsense/Windows/tools/wrappers/csharp/CMakeFiles/generate.stamp&#10;if %errorlevel% neq 0 goto :cmEnd&#10;:cmEnd&#10;endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone&#10;:cmErrorLevel&#10;exit /b %1&#10;:cmDone&#10;if %errorlevel% neq 0 goto :VCEnd" />
+  </Target>
+  <Target Condition="'$(Configuration)|$(Platform)'=='Release|x64'"
+    Name="CustomCommand_Release_8e943cd798b4f9a81a7e9d4538b3414c"
+    Inputs="C:/Elpas/e4ext-intel-realsense/Windows/wrappers/csharp/CMakeLists.txt;C:\Elpas\e4ext-intel-realsense\Windows\tools\CMakeFiles\3.20.2\CMakeCSharpCompiler.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeCSharpInformation.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CSharpUtilities.cmake"
+    Outputs="C:\Elpas\e4ext-intel-realsense\Windows\tools\wrappers\csharp\CMakeFiles\generate.stamp">
+    <Exec Command="echo Building Custom Rule C:/Elpas/e4ext-intel-realsense/Windows/wrappers/csharp/CMakeLists.txt" />
+    <Exec Command="setlocal&#10;&quot;C:\Program Files\CMake\bin\cmake.exe&quot; -SC:/Elpas/e4ext-intel-realsense/Windows -BC:/Elpas/e4ext-intel-realsense/Windows/tools --check-stamp-file C:/Elpas/e4ext-intel-realsense/Windows/tools/wrappers/csharp/CMakeFiles/generate.stamp&#10;if %errorlevel% neq 0 goto :cmEnd&#10;:cmEnd&#10;endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone&#10;:cmErrorLevel&#10;exit /b %1&#10;:cmDone&#10;if %errorlevel% neq 0 goto :VCEnd" />
+  </Target>
+  <Target Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'"
+    Name="CustomCommand_MinSizeRel_8e943cd798b4f9a81a7e9d4538b3414c"
+    Inputs="C:/Elpas/e4ext-intel-realsense/Windows/wrappers/csharp/CMakeLists.txt;C:\Elpas\e4ext-intel-realsense\Windows\tools\CMakeFiles\3.20.2\CMakeCSharpCompiler.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeCSharpInformation.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CSharpUtilities.cmake"
+    Outputs="C:\Elpas\e4ext-intel-realsense\Windows\tools\wrappers\csharp\CMakeFiles\generate.stamp">
+    <Exec Command="echo Building Custom Rule C:/Elpas/e4ext-intel-realsense/Windows/wrappers/csharp/CMakeLists.txt" />
+    <Exec Command="setlocal&#10;&quot;C:\Program Files\CMake\bin\cmake.exe&quot; -SC:/Elpas/e4ext-intel-realsense/Windows -BC:/Elpas/e4ext-intel-realsense/Windows/tools --check-stamp-file C:/Elpas/e4ext-intel-realsense/Windows/tools/wrappers/csharp/CMakeFiles/generate.stamp&#10;if %errorlevel% neq 0 goto :cmEnd&#10;:cmEnd&#10;endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone&#10;:cmErrorLevel&#10;exit /b %1&#10;:cmDone&#10;if %errorlevel% neq 0 goto :VCEnd" />
+  </Target>
+  <Target Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'"
+    Name="CustomCommand_RelWithDebInfo_8e943cd798b4f9a81a7e9d4538b3414c"
+    Inputs="C:/Elpas/e4ext-intel-realsense/Windows/wrappers/csharp/CMakeLists.txt;C:\Elpas\e4ext-intel-realsense\Windows\tools\CMakeFiles\3.20.2\CMakeCSharpCompiler.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeCSharpInformation.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CSharpUtilities.cmake"
+    Outputs="C:\Elpas\e4ext-intel-realsense\Windows\tools\wrappers\csharp\CMakeFiles\generate.stamp">
+    <Exec Command="echo Building Custom Rule C:/Elpas/e4ext-intel-realsense/Windows/wrappers/csharp/CMakeLists.txt" />
+    <Exec Command="setlocal&#10;&quot;C:\Program Files\CMake\bin\cmake.exe&quot; -SC:/Elpas/e4ext-intel-realsense/Windows -BC:/Elpas/e4ext-intel-realsense/Windows/tools --check-stamp-file C:/Elpas/e4ext-intel-realsense/Windows/tools/wrappers/csharp/CMakeFiles/generate.stamp&#10;if %errorlevel% neq 0 goto :cmEnd&#10;:cmEnd&#10;endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone&#10;:cmErrorLevel&#10;exit /b %1&#10;:cmDone&#10;if %errorlevel% neq 0 goto :VCEnd" />
+  </Target>
+  <ItemGroup>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\wrappers\csharp\Authenticator.cs">
+      <Link>Authenticator.cs</Link>
+    </Compile>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\wrappers\csharp\DeviceController.cs">
+      <Link>DeviceController.cs</Link>
+    </Compile>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\wrappers\csharp\Preview.cs">
+      <Link>Preview.cs</Link>
+    </Compile>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\wrappers\csharp\Shared.cs">
+      <Link>Shared.cs</Link>
+    </Compile>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\wrappers\csharp\Logging.cs">
+      <Link>Logging.cs</Link>
+    </Compile>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\wrappers\csharp\FwUpdater.cs">
+      <Link>FwUpdater.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\ZERO_CHECK.vcxproj">
+      <Project>{94103BD6-993F-3166-A33F-ED773F8A041D}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\wrappers\c\rsid_c.vcxproj">
+      <Project>{14E8AA75-5099-3BFF-964B-CC46CB122EAD}</Project>
+      <Name>rsid_c</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'MinSizeRel'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'RelWithDebInfo'">
+  </PropertyGroup>
+  <PropertyGroup>
+    <BuildDependsOn>
+      CustomCommand_Debug_8e943cd798b4f9a81a7e9d4538b3414c;
+      CustomCommand_MinSizeRel_8e943cd798b4f9a81a7e9d4538b3414c;
+      CustomCommand_RelWithDebInfo_8e943cd798b4f9a81a7e9d4538b3414c;
+      CustomCommand_Release_8e943cd798b4f9a81a7e9d4538b3414c;
+      $(BuildDependsOn)
+</BuildDependsOn>
+  </PropertyGroup>
+</Project>

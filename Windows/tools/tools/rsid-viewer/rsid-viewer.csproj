@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6150B227-4968-31B1-BDC0-806B7353A9E6}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>rsid-viewer</ProjectName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+    <ApplicationIcon>C:/Elpas/e4ext-intel-realsense/Windows/tools/rsid-viewer/icon.ico</ApplicationIcon>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <OutputPath>C:\Elpas\e4ext-intel-realsense\Windows\tools\bin\Debug\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <PlatformToolset>v142</PlatformToolset>
+    <AssemblyName>rsid-viewer</AssemblyName>
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\Elpas\e4ext-intel-realsense\Windows\tools\bin\Debug\rsid-viewer.exe</StartProgram>
+    <DebugType>full</DebugType>
+    <DefineConstants>DEBUG;RSID_PREVIEW</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <Optimize>false</Optimize>
+    <WarningLevel>3</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <OutputPath>C:\Elpas\e4ext-intel-realsense\Windows\tools\bin\Release\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <PlatformToolset>v142</PlatformToolset>
+    <AssemblyName>rsid-viewer</AssemblyName>
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\Elpas\e4ext-intel-realsense\Windows\tools\bin\Release\rsid-viewer.exe</StartProgram>
+    <DebugType>none</DebugType>
+    <DefineConstants>RSID_PREVIEW</DefineConstants>
+    <ErrorReport>queue</ErrorReport>
+    <Optimize>true</Optimize>
+    <WarningLevel>1</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <OutputPath>C:\Elpas\e4ext-intel-realsense\Windows\tools\bin\MinSizeRel\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <PlatformToolset>v142</PlatformToolset>
+    <AssemblyName>rsid-viewer</AssemblyName>
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\Elpas\e4ext-intel-realsense\Windows\tools\bin\MinSizeRel\rsid-viewer.exe</StartProgram>
+    <DebugType>none</DebugType>
+    <DefineConstants>RSID_PREVIEW</DefineConstants>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <OutputPath>C:\Elpas\e4ext-intel-realsense\Windows\tools\bin\RelWithDebInfo\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <PlatformToolset>v142</PlatformToolset>
+    <AssemblyName>rsid-viewer</AssemblyName>
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\Elpas\e4ext-intel-realsense\Windows\tools\bin\RelWithDebInfo\rsid-viewer.exe</StartProgram>
+    <DebugType>full</DebugType>
+    <DefineConstants>RSID_PREVIEW</DefineConstants>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.CSharp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.CSharp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemGroup>
+    <None Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\CMakeLists.txt">
+      <Link>CMakeLists.txt</Link>
+    </None>
+  </ItemGroup>
+  <Target Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"
+    Name="CustomCommand_Debug_ece8f4c957a2fa7346021e97e571f73e"
+    Inputs="C:/Elpas/e4ext-intel-realsense/Windows/tools/rsid-viewer/CMakeLists.txt;C:\Elpas\e4ext-intel-realsense\Windows\tools\CMakeFiles\3.20.2\CMakeCSharpCompiler.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeCSharpCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeCSharpInformation.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeDetermineCSharpCompiler.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeTestCSharpCompiler.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CSharpUtilities.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CompilerId\VS-10.csproj.in"
+    Outputs="C:\Elpas\e4ext-intel-realsense\Windows\tools\tools\rsid-viewer\CMakeFiles\generate.stamp">
+    <Exec Command="echo Building Custom Rule C:/Elpas/e4ext-intel-realsense/Windows/tools/rsid-viewer/CMakeLists.txt" />
+    <Exec Command="setlocal&#10;&quot;C:\Program Files\CMake\bin\cmake.exe&quot; -SC:/Elpas/e4ext-intel-realsense/Windows -BC:/Elpas/e4ext-intel-realsense/Windows/tools --check-stamp-file C:/Elpas/e4ext-intel-realsense/Windows/tools/tools/rsid-viewer/CMakeFiles/generate.stamp&#10;if %errorlevel% neq 0 goto :cmEnd&#10;:cmEnd&#10;endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone&#10;:cmErrorLevel&#10;exit /b %1&#10;:cmDone&#10;if %errorlevel% neq 0 goto :VCEnd" />
+  </Target>
+  <Target Condition="'$(Configuration)|$(Platform)'=='Release|x64'"
+    Name="CustomCommand_Release_ece8f4c957a2fa7346021e97e571f73e"
+    Inputs="C:/Elpas/e4ext-intel-realsense/Windows/tools/rsid-viewer/CMakeLists.txt;C:\Elpas\e4ext-intel-realsense\Windows\tools\CMakeFiles\3.20.2\CMakeCSharpCompiler.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeCSharpCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeCSharpInformation.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeDetermineCSharpCompiler.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeTestCSharpCompiler.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CSharpUtilities.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CompilerId\VS-10.csproj.in"
+    Outputs="C:\Elpas\e4ext-intel-realsense\Windows\tools\tools\rsid-viewer\CMakeFiles\generate.stamp">
+    <Exec Command="echo Building Custom Rule C:/Elpas/e4ext-intel-realsense/Windows/tools/rsid-viewer/CMakeLists.txt" />
+    <Exec Command="setlocal&#10;&quot;C:\Program Files\CMake\bin\cmake.exe&quot; -SC:/Elpas/e4ext-intel-realsense/Windows -BC:/Elpas/e4ext-intel-realsense/Windows/tools --check-stamp-file C:/Elpas/e4ext-intel-realsense/Windows/tools/tools/rsid-viewer/CMakeFiles/generate.stamp&#10;if %errorlevel% neq 0 goto :cmEnd&#10;:cmEnd&#10;endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone&#10;:cmErrorLevel&#10;exit /b %1&#10;:cmDone&#10;if %errorlevel% neq 0 goto :VCEnd" />
+  </Target>
+  <Target Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'"
+    Name="CustomCommand_MinSizeRel_ece8f4c957a2fa7346021e97e571f73e"
+    Inputs="C:/Elpas/e4ext-intel-realsense/Windows/tools/rsid-viewer/CMakeLists.txt;C:\Elpas\e4ext-intel-realsense\Windows\tools\CMakeFiles\3.20.2\CMakeCSharpCompiler.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeCSharpCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeCSharpInformation.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeDetermineCSharpCompiler.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeTestCSharpCompiler.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CSharpUtilities.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CompilerId\VS-10.csproj.in"
+    Outputs="C:\Elpas\e4ext-intel-realsense\Windows\tools\tools\rsid-viewer\CMakeFiles\generate.stamp">
+    <Exec Command="echo Building Custom Rule C:/Elpas/e4ext-intel-realsense/Windows/tools/rsid-viewer/CMakeLists.txt" />
+    <Exec Command="setlocal&#10;&quot;C:\Program Files\CMake\bin\cmake.exe&quot; -SC:/Elpas/e4ext-intel-realsense/Windows -BC:/Elpas/e4ext-intel-realsense/Windows/tools --check-stamp-file C:/Elpas/e4ext-intel-realsense/Windows/tools/tools/rsid-viewer/CMakeFiles/generate.stamp&#10;if %errorlevel% neq 0 goto :cmEnd&#10;:cmEnd&#10;endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone&#10;:cmErrorLevel&#10;exit /b %1&#10;:cmDone&#10;if %errorlevel% neq 0 goto :VCEnd" />
+  </Target>
+  <Target Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'"
+    Name="CustomCommand_RelWithDebInfo_ece8f4c957a2fa7346021e97e571f73e"
+    Inputs="C:/Elpas/e4ext-intel-realsense/Windows/tools/rsid-viewer/CMakeLists.txt;C:\Elpas\e4ext-intel-realsense\Windows\tools\CMakeFiles\3.20.2\CMakeCSharpCompiler.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeCSharpCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeCSharpInformation.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeDetermineCSharpCompiler.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeTestCSharpCompiler.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CSharpUtilities.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CompilerId\VS-10.csproj.in"
+    Outputs="C:\Elpas\e4ext-intel-realsense\Windows\tools\tools\rsid-viewer\CMakeFiles\generate.stamp">
+    <Exec Command="echo Building Custom Rule C:/Elpas/e4ext-intel-realsense/Windows/tools/rsid-viewer/CMakeLists.txt" />
+    <Exec Command="setlocal&#10;&quot;C:\Program Files\CMake\bin\cmake.exe&quot; -SC:/Elpas/e4ext-intel-realsense/Windows -BC:/Elpas/e4ext-intel-realsense/Windows/tools --check-stamp-file C:/Elpas/e4ext-intel-realsense/Windows/tools/tools/rsid-viewer/CMakeFiles/generate.stamp&#10;if %errorlevel% neq 0 goto :cmEnd&#10;:cmEnd&#10;endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone&#10;:cmErrorLevel&#10;exit /b %1&#10;:cmDone&#10;if %errorlevel% neq 0 goto :VCEnd" />
+  </Target>
+  <ItemGroup>
+    <None Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\App.config">
+      <Link>App.config</Link>
+    </None>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\App.xaml.cs">
+      <Link>App.xaml.cs</Link>
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\ErrorDialog.xaml.cs">
+      <Link>ErrorDialog.xaml.cs</Link>
+      <DependentUpon>ErrorDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\OKCancelDialog.xaml.cs">
+      <Link>OKCancelDialog.xaml.cs</Link>
+    </Compile>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\ProgressBarDialog.xaml.cs">
+      <Link>ProgressBarDialog.xaml.cs</Link>
+      <DependentUpon>ProgressBarDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\MainWindow.xaml.cs">
+      <Link>MainWindow.xaml.cs</Link>
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\EnrollInput.xaml.cs">
+      <Link>EnrollInput.xaml.cs</Link>
+      <DependentUpon>EnrollInput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\EnrollInstructions.xaml.cs">
+      <Link>EnrollInstructions.xaml.cs</Link>
+      <DependentUpon>EnrollInstructions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\DeleteUserInput.xaml.cs">
+      <Link>DeleteUserInput.xaml.cs</Link>
+      <DependentUpon>DeleteUserInput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\FwUpdateInput.xaml.cs">
+      <Link>FwUpdateInput.xaml.cs</Link>
+      <DependentUpon>FwUpdateInput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\Utilities.cs">
+      <Link>Utilities.cs</Link>
+    </Compile>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\Database.cs">
+      <Link>Database.cs</Link>
+    </Compile>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\DatabaseSerializer.cs">
+      <Link>DatabaseSerializer.cs</Link>
+    </Compile>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\FrameDumper.cs">
+      <Link>FrameDumper.cs</Link>
+    </Compile>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\AuthSettingsInput.xaml.cs">
+      <Link>AuthSettingsInput.xaml.cs</Link>
+      <DependentUpon>AuthSettingsInput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\Properties\Resources.Designer.cs">
+      <Link>Properties\Resources.Designer.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\Properties\Settings.Designer.cs">
+      <Link>Properties\Settings.Designer.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\Properties\Settings.settings">
+      <Link>Properties\Settings.settings</Link>
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\FONT AWESOME 5 FREE-REGULAR-400.OTF">
+      <Link>FONT AWESOME 5 FREE-REGULAR-400.OTF</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\FONT AWESOME 5 FREE-SOLID-900.OTF">
+      <Link>FONT AWESOME 5 FREE-SOLID-900.OTF</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\icon.ico">
+      <Link>icon.ico</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero2">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="System">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="System.Core">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="System.Data">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="System.Xaml">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="System.Xml">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="System.Management">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\Properties\Resources.resx">
+      <Link>Properties\Resources.resx</Link>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\App.xaml">
+      <Link>App.xaml</Link>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\Dictionary1.xaml">
+      <Link>Dictionary1.xaml</Link>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\ErrorDialog.xaml">
+      <Link>ErrorDialog.xaml</Link>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\OKCancelDialog.xaml">
+      <Link>OKCancelDialog.xaml</Link>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\ProgressBarDialog.xaml">
+      <Link>ProgressBarDialog.xaml</Link>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\MainWindow.xaml">
+      <Link>MainWindow.xaml</Link>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\EnrollInput.xaml">
+      <Link>EnrollInput.xaml</Link>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\EnrollInstructions.xaml">
+      <Link>EnrollInstructions.xaml</Link>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\DeleteUserInput.xaml">
+      <Link>DeleteUserInput.xaml</Link>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\FwUpdateInput.xaml">
+      <Link>FwUpdateInput.xaml</Link>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\rsid-viewer\AuthSettingsInput.xaml">
+      <Link>AuthSettingsInput.xaml</Link>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\ZERO_CHECK.vcxproj">
+      <Project>{94103BD6-993F-3166-A33F-ED773F8A041D}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Elpas\e4ext-intel-realsense\Windows\tools\wrappers\csharp\rsid_dotnet.csproj">
+      <Project>{398D5FC8-7F7F-30D9-979E-D0CB5140B1D4}</Project>
+      <Name>rsid_dotnet</Name>
+      <SkipGetTargetFrameworkProperties>true</SkipGetTargetFrameworkProperties>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'MinSizeRel'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'RelWithDebInfo'">
+  </PropertyGroup>
+  <PropertyGroup>
+    <BuildDependsOn>
+      CustomCommand_Debug_ece8f4c957a2fa7346021e97e571f73e;
+      CustomCommand_MinSizeRel_ece8f4c957a2fa7346021e97e571f73e;
+      CustomCommand_RelWithDebInfo_ece8f4c957a2fa7346021e97e571f73e;
+      CustomCommand_Release_ece8f4c957a2fa7346021e97e571f73e;
+      $(BuildDependsOn)
+</BuildDependsOn>
+  </PropertyGroup>
+</Project>
