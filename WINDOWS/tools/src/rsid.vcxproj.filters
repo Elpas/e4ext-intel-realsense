@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\Capture\StreamConverter.cc">
+      <Filter>Capture</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\Capture\RawToRgb.cc">
+      <Filter>Capture</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\Capture\MSMFCapture.cc">
+      <Filter>Capture</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\FaceAuthenticator.cc" />
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\FaceAuthenticatorImpl.cc" />
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\DeviceController.cc" />
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\DeviceControllerImpl.cc" />
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\StatusHelper.cc" />
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\Version.cc" />
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\Logging.cc" />
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\FwUpdater.cc" />
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\DiscoverDevices.cc" />
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\Preview.cc" />
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\PreviewImpl.cc" />
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\Logger\Logger.cc">
+      <Filter>Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\PacketManager\Randomizer.cc">
+      <Filter>PacketManager</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\PacketManager\PacketSender.cc">
+      <Filter>PacketManager</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\PacketManager\SerialPacket.cc">
+      <Filter>PacketManager</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\PacketManager\Timer.cc">
+      <Filter>PacketManager</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\PacketManager\Crc16.cc">
+      <Filter>PacketManager</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\PacketManager\WindowsSerial.cc">
+      <Filter>PacketManager</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\PacketManager\NonSecureSession.cc">
+      <Filter>PacketManager</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\Matcher\Matcher.cc">
+      <Filter>Matcher</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\FwUpdate\Utilities.cc">
+      <Filter>FwUpdate</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\FwUpdate\Cmds.cc">
+      <Filter>FwUpdate</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\FwUpdate\FwUpdaterComm.cc">
+      <Filter>FwUpdate</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\FwUpdate\FwUpdateEngine.cc">
+      <Filter>FwUpdate</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\Capture\StreamConverter.h">
+      <Filter>Capture</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\Capture\MetadataDefines.h">
+      <Filter>Capture</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\Capture\RawToRgb.h">
+      <Filter>Capture</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\Capture\MSMFCapture.h">
+      <Filter>Capture</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\CommonValues.h" />
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\FaceAuthenticatorImpl.h" />
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\DeviceControllerImpl.h" />
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\StatusHelper.h" />
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\PreviewImpl.h" />
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\Logger\Logger.h">
+      <Filter>Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\PacketManager\Randomizer.h">
+      <Filter>PacketManager</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\PacketManager\PacketSender.h">
+      <Filter>PacketManager</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\PacketManager\SerialPacket.h">
+      <Filter>PacketManager</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\PacketManager\Timer.h">
+      <Filter>PacketManager</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\PacketManager\SerialConnection.h">
+      <Filter>PacketManager</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\PacketManager\CommonTypes.h">
+      <Filter>PacketManager</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\PacketManager\Crc16.h">
+      <Filter>PacketManager</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\PacketManager\WindowsSerial.h">
+      <Filter>PacketManager</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\PacketManager\NonSecureSession.h">
+      <Filter>PacketManager</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\Matcher\Matcher.h">
+      <Filter>Matcher</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\Matcher\MatcherImplDefines.h">
+      <Filter>Matcher</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\FwUpdate\Utilities.h">
+      <Filter>FwUpdate</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\FwUpdate\Cmds.h">
+      <Filter>FwUpdate</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\FwUpdate\ModuleInfo.h">
+      <Filter>FwUpdate</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\FwUpdate\FwUpdaterComm.h">
+      <Filter>FwUpdate</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\FwUpdate\FwUpdateEngine.h">
+      <Filter>FwUpdate</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Capture">
+      <UniqueIdentifier>{3C3A6861-5061-3C03-B1AB-6838CF1E4962}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FwUpdate">
+      <UniqueIdentifier>{C1D33774-B1F2-3FD3-BBAD-A6CAAE42B431}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logger">
+      <UniqueIdentifier>{08DD2AC4-85B2-3121-AAA9-361068BA60EE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Matcher">
+      <UniqueIdentifier>{C1F14CB3-1B06-3D0D-99D9-659835A1BE4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PacketManager">
+      <UniqueIdentifier>{01203B12-B00A-32A7-B83A-678014D31102}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,150 @@
+Realsense ID version 0.21.0
+-----------------------------------
+* Enroll with RGB image, 
+* Added option in the app to batch enroll using a json file.
+* Example JSON for enrol:
+    [       
+        {
+            "userId": "user1",
+            "filename": "user1.png"
+            
+        },      
+        {
+            "userId": "user2",            
+            "filename": "C:\\devel\\user2.jpg"
+        }     
+    ]
+    
+* Full device rotation support - device can now be used at 0/90/180/270 degrees.    
+* Improved multiple faces processing.
+* Improved significantly Anti-spoofing accuracy.
+* Increased max serial packets to 8k for improved serial performace.
+* Known issues: Spoof algo flow is not supported in 90/270 degrees.
+
+
+Realsense ID version 0.19.0
+-----------------------------------
+* New dump and preview menu in rsid-viewer.
+* Ability to dump face cropped images. 
+* Improved recognition and anti-spoofing accuracy.
+* Support for new devices.
+    * Upcoming releases will contain 2 firmware binaries.
+    * Trying to flash the wrong firmware binary will fail on device mismatch.
+
+
+Realsense ID version 0.18.1
+-----------------------------------
+Added missing 3rd party files
+Add option to enable metadata in windows installer
+
+
+Realsense ID version 0.18.0
+-----------------------------------
+* New device config options to support multiple faces and algo options:
+    * FaceSelectionPolicy:
+        * Single (default, authenticate closest face).
+        * All (authenticate all detected faces (up to 5)).
+    * AlgoFlow:        
+        * All (default).
+        * FaceDetectionOnly.
+        * SpoofOnly. 
+        * RecognitionOnly.
+    
+* Preview improvements:
+    * Added MJPEG @ 1080p and 720p streams.
+    * Added an option to display and save RAW10 images of the selected frame.
+    * UVC metadata support (e.g. timestamp info) - please refer to the README for additional information on how to enable this feature on Windows.
+
+ * Authentication loop - automatically stopped even if the host exits without cancelling.
+
+
+Realsense ID version 0.17.1
+--------------------------
+Fixed preview resource cleanup in windows
+
+Realsense ID version 0.17.0
+--------------------------
+* Database import/export support [Device mode only]:
+  'rsid-viewer' contains 2 new buttons, when in 'Device Mode' - one will export the database from the device to a json file, the other will import a json compatible file to device and save it.
+   Right now, usernames must be unique for this to work properly.
+* Better face detection capabilities.
+* Adaptive learning. Update the user's faceprints when new information can be learned, after a successful authentication attempt.
+* Fixed device settings issue with 'advanced mode'.
+* Fixed crash caused by trying to resume/pause preview while updating firmware.
+* Fixed a crash caused by incorrect order of de-allocating resources.
+* Advanced mode features enabled.
+    * Run Spoof Detection - will return if the user is fake or not. Example can be found in 'rsid-viewer'.
+    * Camera Dump Mode - get 1920x1080 RAW10 images from the device, instead of a live RGB preview stream.
+
+Realsense ID version 0.16.0
+--------------------------
+•	Increased preview resolution to 720p 
+•	Replaced OpenCV preview impl with MSMF (Windows) and Video4Linux (Linux).
+•	Added OnFaceDetected callback returning rectangles of authenticated face and other faces in the field of view. 
+•	Enabled support up to 1000 users on device.
+•	Added matching score and confidence to Match results ( struct MatchResultHost)
+•	Match function changes to support short calculations only (instead of float)
+•	Fixed a bug in passing faceprints from device to host (supposed to improve recognition accuracy in host mode)
+•	Improved accuracy for Covid masks mode
+•	Enabled FW upgrade without new recognition model
+
+
+Realsense ID version 0.15.1
+--------------------------
+* Fix/Align Android and other OS release number.
+
+Realsense ID version 0.15.0
+--------------------------
+* Added recogntion-only authentication mode.
+* GUI updates and fixes.
+* Auto-exposure​.
+* New recognition model (requiring re-enrollment).
+* ​Increased max user id size (30 chars).
+* CMake install support.
+* MCU support stage 1 (Removed mutexes from code for easier integration with embedded platforms without threads).
+* Added support for authentication loop to Android app
+
+Realsense ID version 0.13.0
+--------------------------
+* New firmware version 2.0.11. 
+* Improved enrollment process to capture center/left/right poses.
+* Android support for firmware update.
+* GUI updates and fixes.
+* Serial protocol improvments.
+* Simplified FaceAuthenticator constrcutor.
+
+Realsense ID version 0.12.4
+--------------------------
+* Improved SDK installer (bundled with firmware)
+* Firmware-Update support
+* C# sample redesign and support for firmware update
+* Android preview flips when choosing to flip camera orientation.
+* Support for encrypted/clear communication with the device. Use "CMake -DRSID_SECURE=1" to enable encryption.
+* Enable preview in new Android API levels.
+* Support for auto detect preview camera.
+* Improved faceprints extraction algorithm.
+
+
+Realsense ID version 0.11.0
+--------------------------
+* Android API wrappers and example including all security and preview features.
+* "Server mode" enabling faceprints extraction to host/server and additional API for matching on host/server.
+
+Realsense ID version 0.10.1
+--------------------------
+* New APIs:
+ - Pair host with device
+ - Set/Query Face Authentication settings
+ - Query enrolled users from device
+ - Query FW version
+ - Log API
+* Secure communication improvments
+* Improve serial protocol
+* Update examples
+
+Realsense ID version 0.9.2
+--------------------------
+Enabled USB and UART I/Fs
+Linux/Windows OSs
+Secure mode
+Preview based on OpenCV

@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A1AB9652-5051-3B56-9936-A53EBB31E027}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\3rdparty\libjpeg-turbo_2_1_0;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\3rdparty\libjpeg-turbo_2_1_0;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\3rdparty\libjpeg-turbo_2_1_0;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\3rdparty\libjpeg-turbo_2_1_0;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\CMakeLists.txt">
+      <StdOutEncoding>UTF-8</StdOutEncoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Elpas/e4ext-intel-realsense/WINDOWS/3rdparty/libjpeg-turbo_2_1_0/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Elpas/e4ext-intel-realsense/WINDOWS -BC:/Elpas/e4ext-intel-realsense/WINDOWS/tools --check-stamp-file C:/Elpas/e4ext-intel-realsense/WINDOWS/tools/3rdparty/libjpeg-turbo_2_1_0/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\cmakescripts\BuildPackages.cmake;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\cmakescripts\GNUInstallDirs.cmake;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\cmakescripts\cmake_uninstall.cmake.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\croptest.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\jconfigint.h.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\release\Config.cmake.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\release\installer.nsi.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\release\libjpeg.pc.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\release\libturbojpeg.pc.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\release\maketarball.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\win\jconfig.h.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\win\projectTargets.cmake.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\win\vc\projectTargets-release.cmake.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\CMakeFiles\CheckIncludeFiles\HAVE_INTRIN_H.c;C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\CMakeFiles\CheckTypeSize\SIZE_T.c;C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\CMakeFiles\CheckTypeSize\UNSIGNED_LONG.c;C:\Program Files\CMake\share\cmake-3.20\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeConfigurableFile.in;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckIncludeFile.c.in;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckIncludeFiles.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckTypeSize.c.in;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\WriteBasicConfigVersionFile.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\3rdparty\libjpeg-turbo_2_1_0\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Elpas/e4ext-intel-realsense/WINDOWS/3rdparty/libjpeg-turbo_2_1_0/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Elpas/e4ext-intel-realsense/WINDOWS -BC:/Elpas/e4ext-intel-realsense/WINDOWS/tools --check-stamp-file C:/Elpas/e4ext-intel-realsense/WINDOWS/tools/3rdparty/libjpeg-turbo_2_1_0/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\cmakescripts\BuildPackages.cmake;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\cmakescripts\GNUInstallDirs.cmake;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\cmakescripts\cmake_uninstall.cmake.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\croptest.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\jconfigint.h.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\release\Config.cmake.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\release\installer.nsi.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\release\libjpeg.pc.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\release\libturbojpeg.pc.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\release\maketarball.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\win\jconfig.h.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\win\projectTargets.cmake.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\win\vc\projectTargets-release.cmake.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\CMakeFiles\CheckIncludeFiles\HAVE_INTRIN_H.c;C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\CMakeFiles\CheckTypeSize\SIZE_T.c;C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\CMakeFiles\CheckTypeSize\UNSIGNED_LONG.c;C:\Program Files\CMake\share\cmake-3.20\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeConfigurableFile.in;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckIncludeFile.c.in;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckIncludeFiles.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckTypeSize.c.in;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\WriteBasicConfigVersionFile.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\3rdparty\libjpeg-turbo_2_1_0\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Elpas/e4ext-intel-realsense/WINDOWS/3rdparty/libjpeg-turbo_2_1_0/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Elpas/e4ext-intel-realsense/WINDOWS -BC:/Elpas/e4ext-intel-realsense/WINDOWS/tools --check-stamp-file C:/Elpas/e4ext-intel-realsense/WINDOWS/tools/3rdparty/libjpeg-turbo_2_1_0/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\cmakescripts\BuildPackages.cmake;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\cmakescripts\GNUInstallDirs.cmake;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\cmakescripts\cmake_uninstall.cmake.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\croptest.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\jconfigint.h.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\release\Config.cmake.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\release\installer.nsi.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\release\libjpeg.pc.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\release\libturbojpeg.pc.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\release\maketarball.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\win\jconfig.h.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\win\projectTargets.cmake.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\win\vc\projectTargets-release.cmake.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\CMakeFiles\CheckIncludeFiles\HAVE_INTRIN_H.c;C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\CMakeFiles\CheckTypeSize\SIZE_T.c;C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\CMakeFiles\CheckTypeSize\UNSIGNED_LONG.c;C:\Program Files\CMake\share\cmake-3.20\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeConfigurableFile.in;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckIncludeFile.c.in;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckIncludeFiles.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckTypeSize.c.in;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\WriteBasicConfigVersionFile.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\3rdparty\libjpeg-turbo_2_1_0\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Elpas/e4ext-intel-realsense/WINDOWS/3rdparty/libjpeg-turbo_2_1_0/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Elpas/e4ext-intel-realsense/WINDOWS -BC:/Elpas/e4ext-intel-realsense/WINDOWS/tools --check-stamp-file C:/Elpas/e4ext-intel-realsense/WINDOWS/tools/3rdparty/libjpeg-turbo_2_1_0/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\cmakescripts\BuildPackages.cmake;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\cmakescripts\GNUInstallDirs.cmake;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\cmakescripts\cmake_uninstall.cmake.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\croptest.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\jconfigint.h.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\release\Config.cmake.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\release\installer.nsi.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\release\libjpeg.pc.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\release\libturbojpeg.pc.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\release\maketarball.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\win\jconfig.h.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\win\projectTargets.cmake.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\3rdparty\libjpeg-turbo_2_1_0\win\vc\projectTargets-release.cmake.in;C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\CMakeFiles\CheckIncludeFiles\HAVE_INTRIN_H.c;C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\CMakeFiles\CheckTypeSize\SIZE_T.c;C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\CMakeFiles\CheckTypeSize\UNSIGNED_LONG.c;C:\Program Files\CMake\share\cmake-3.20\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakeConfigurableFile.in;C:\Program Files\CMake\share\cmake-3.20\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckIncludeFile.c.in;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckIncludeFiles.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckTypeSize.c.in;C:\Program Files\CMake\share\cmake-3.20\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.20\Modules\WriteBasicConfigVersionFile.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\3rdparty\libjpeg-turbo_2_1_0\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\ZERO_CHECK.vcxproj">
+      <Project>{6394589A-9381-3505-9D27-50EE887CFD43}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\3rdparty\libjpeg-turbo_2_1_0\cjpeg-static.vcxproj">
+      <Project>{CF3A0BD6-8706-36E8-8F3A-D6D7DF576590}</Project>
+      <Name>cjpeg-static</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\3rdparty\libjpeg-turbo_2_1_0\djpeg-static.vcxproj">
+      <Project>{1B3CD33C-B8E0-398F-B588-2BD724B9C219}</Project>
+      <Name>djpeg-static</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\3rdparty\libjpeg-turbo_2_1_0\jpeg-static.vcxproj">
+      <Project>{8DFC82D0-17D5-37AC-9BB2-94896BD6180B}</Project>
+      <Name>jpeg-static</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\3rdparty\libjpeg-turbo_2_1_0\jpegtran-static.vcxproj">
+      <Project>{64D37E9F-C5E5-38D5-B34D-7A8FF8D2DD3D}</Project>
+      <Name>jpegtran-static</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\3rdparty\libjpeg-turbo_2_1_0\md5\md5cmp.vcxproj">
+      <Project>{3D994166-D266-3837-BB01-3D8114B95EAE}</Project>
+      <Name>md5cmp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\3rdparty\libjpeg-turbo_2_1_0\rdjpgcom.vcxproj">
+      <Project>{0997ED57-0340-3E08-A088-CEC3EF651DFA}</Project>
+      <Name>rdjpgcom</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\3rdparty\libjpeg-turbo_2_1_0\simd.vcxproj">
+      <Project>{A70AD25E-B929-3BEF-8382-6982AFE16A08}</Project>
+      <Name>simd</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Elpas\e4ext-intel-realsense\WINDOWS\tools\3rdparty\libjpeg-turbo_2_1_0\wrjpgcom.vcxproj">
+      <Project>{DA884631-35EE-321E-B5CD-06182F5B8FE1}</Project>
+      <Name>wrjpgcom</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
