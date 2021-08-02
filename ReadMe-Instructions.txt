@@ -1,6 +1,8 @@
 to launch navigate to folder and type:
 cd  /home/pi/Uri/Intel/clone5/RealSenseID/samples/cpp/build
 
+since if inserted code into git it compiles without the window I save the whole file in 7z and update all the changes at once!!!
+so just unzip WINDOWS.7z
 
 
 How to compile code on windows:
