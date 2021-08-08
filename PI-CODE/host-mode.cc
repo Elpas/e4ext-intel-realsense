@@ -11,6 +11,8 @@
 #include <chrono>
 #include <thread>
 #include <future>
+#include <iostream>
+#include <fstream>
 
 #if defined WIN32
 #include <winsock.h>
@@ -186,6 +188,121 @@ try
     printf("\n");
     system("pause");
     return (0);
+	}
+	catch(...)
+	{
+		addLog("excpetion in tcpsend");
+	}
+	
+}
+int getFileTcp(string savePath)
+{
+
+        addLog(" send tcp 1");
+try
+{
+  //  char* ip = "192.168.0.64";
+//int port = 8093;
+//char* reader = "11";
+
+#if defined WIN32
+    WSADATA wsaData;
+    int iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
+    if (iResult != 0)
+    {
+        addLog("error at WSASturtup\n");
+        return 0;
+    }
+#endif
+
+        addLog(" send tcp 2");
+    // Socket creation
+    int Csocket;
+    Csocket = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
+    if (Csocket < 0)
+    {
+		addLog("socket creation failed");
+        ErrorHandler("socket creation failed.\n");
+        closesocket(Csocket);
+        ClearWinSock();
+        return 0;
+    }
+
+        addLog(" send tcp 333");
+    // Server address construction
+    struct sockaddr_in sad;
+     addLog(" send tcp 3.1");
+    memset(&sad, 0, sizeof(sad));
+    sad.sin_family = AF_INET;
+    sad.sin_addr.s_addr = inet_addr(ipOmni); // server IP
+    sad.sin_port = htons(portOmni);                       // Server port
+    // Connection to the server
+     addLog(" going to connect...");
+    if (connect(Csocket, (struct sockaddr*)&sad, sizeof(sad)) < 0)
+    {
+		addLog("Failed to connect.\n");
+        ErrorHandler("Failed to connect.\n");
+        closesocket(Csocket);
+        ClearWinSock();
+        return 0;
+    }
+ addLog(" send tcp 4");
+   //@ char* inputString = "prova"; // String to send
+
+    
+ 
+ addLog(" send tcp 3");
+    char* inputString = const_cast<char*>("REALSENSE_GET_FILE");
+
+    int stringLen = strlen(inputString);
+ addLog(" send tcp 5");
+    if (send(Csocket, inputString, stringLen, 0) != stringLen)
+    {
+		addLog("send() sent a different number of bytes than expected");
+        ErrorHandler("send() sent a different number of bytes than expected");
+        closesocket(Csocket);
+        ClearWinSock();
+        return 0;
+    }
+ addLog(" send tcp 6");
+
+int bytesRcvd;
+    int totalBytesRcvd = 0;
+    char buf[500000]; // buffer for data from the server
+    printf("Received: "); // Setup to print the echoed string
+
+    while (totalBytesRcvd < stringLen)
+    {
+        if ((bytesRcvd = recv(Csocket, buf, 500000 - 1, 0)) <= 0)
+        {
+            ErrorHandler("recv() failed or connection closed prematurely");
+            closesocket(Csocket);
+            ClearWinSock();
+            return 0;
+        }
+        totalBytesRcvd += bytesRcvd; // Keep tally of total bytes
+        buf[bytesRcvd] = '\0';       // Add \0 so printf knows where to stop
+        remove( savePath.c_str() );
+        ofstream MyFile((const char *)savePath.c_str(),std::ios::binary);
+        MyFile.write(buf,bytesRcvd-1) ;
+
+        // Close the file
+        MyFile.close();
+
+
+        
+    }
+    // Closing connection
+    closesocket(Csocket);
+    ClearWinSock();
+    printf("\n");
+    system("pause");
+    return (0);
+
+   
+    return 1;
+
+    
 	}
 	catch(...)
 	{
@@ -383,8 +500,7 @@ void authenticate_faceprints(const RealSenseID::SerialConfig& serial_config)
 //----my functions 
 
 
-#include <iostream>
-#include <fstream>
+
 std::streampos fileSize( const char* filePath ){
 
     std::streampos fsize = 0;
@@ -420,6 +536,9 @@ string delUnnecessary(string &str)
     }
     return str;
 }
+
+  
+
 void loadFile(string path)
 {
     try
@@ -435,7 +554,13 @@ void loadFile(string path)
 
     std::fstream fh;
     string fileName(path) ;
+    
     fh.open(fileName, std::fstream::in | std::fstream::binary);
+    if(!fh)
+    {
+        return ;
+    } 
+
     int numberOfUsers =0;
    
     int nSize=fileSize(fileName.c_str()) ;
@@ -501,8 +626,12 @@ int main(int argc, char *argv[])
         strcpy(readerOmni,"11") ;
         strcpy(usbPort,"/dev/ttyACM0");
     }
+    string path("/home/pi/Uri/Intel/clone6/RealSenseID-v.21.0/samples/cpp/build/db.db");
+    getFileTcp(path) ;
 
-    loadFile("/home/pi/Uri/Intel/clone6/RealSenseID-v.21.0/samples/cpp/build/mysave.db");
+    loadFile(path);
+    
+    //loadFile("//192.168.0.64//c$//1//mysave.db") ; 
     RealSenseID::SerialConfig config {usbPort};
     
     //enroll_faceprints(config, "my-username");
