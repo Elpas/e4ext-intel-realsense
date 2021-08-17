@@ -29,6 +29,7 @@ you can see https://github.com/IntelRealSense/RealSenseID
 
 
 use this command to find out port connected :
+--------------------------------------------------------
 sudo dmesg | grep 'Intel F450' -A 5 | grep ttyACM
 and only probably change the acm0 to acm1 etc...
 
