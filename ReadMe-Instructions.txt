@@ -49,11 +49,9 @@ to update firmware:
 in directory:
 pi@raspberrypi:~/Uri/Intel/clone6/RealSenseID-v.21.0/build/bin $ 
 
-./rsid-fw-update --file "/home/pi/Uri/Intel/clone6/RealSenseID-v.21.0/build/bin/F450_3.1.0.29_SKU1_SIGNED.bin" --port COM3 --force-version
+./rsid-fw-update --file "/home/pi/Uri/Intel/clone6/RealSenseID-v.21.0/build/bin/F450_3.1.0.29_SKU1_SIGNED.bin" --port "/dev/ttyACM0" --force-version
+./rsid-fw-update --file "/home/pi/Uri/Intel/clone6/RealSenseID-v.21.0/build/bin/F450_4.0.0.37_SKU1_SIGNED.bin" --port  "/dev/ttyACM0"  --force-version
 
-
-
-./rsid-fw-update --file "/home/pi/Uri/Intel/clone6/RealSenseID-v.21.0/build/bin/F450_4.0.0.37_SKU1_SIGNED.bin" --port  "/dev/ttyACM0"
 
 
 

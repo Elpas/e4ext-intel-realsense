@@ -13,6 +13,7 @@
 #include <future>
 #include <iostream>
 #include <fstream>
+#include <mutex>
 
 
 
@@ -40,6 +41,7 @@ using namespace std;
 std::chrono::steady_clock::time_point lastGetFile = std::chrono::steady_clock::now();
 
 void loadFile(string path);
+string delUnnecessary(string &str);
 string g_lastFileInfo="0" ;
 string g_filePath="" ;
 // map of user-id->faceprint_pair to demonstrate faceprints feature.
@@ -49,6 +51,172 @@ static std::map<std::string, RealSenseID::Faceprints> s_user_faceprint_db;
 #define PROTOPORT  5193            // Default port number
 #pragma comment(lib, "ws2_32.lib") // Winsock Library
 void addLog( char *pErr) ;
+
+
+std::mutex mutexShared;
+#define MAX_LEN 100000
+
+int Csocket=0;
+int tcp_send(char *pBuffer,int len)
+{
+	int n=send(Csocket, pBuffer, len, 0) ; 
+	if (n != len)
+    {
+		  return 0;
+    }
+	return 1; 
+	
+}
+int loadFaces(char *pData1,int len)
+{
+   
+    try
+    {
+
+       s_user_faceprint_db.clear();
+
+
+    
+
+    int numberOfUsers =0;
+   
+    int nSize=len;
+
+    
+    memcpy(&numberOfUsers,&pData1[0],4);
+    
+    int index=4; 
+    for(int i=0;i<numberOfUsers;i++)
+    {
+        char name1[100] ;
+        memcpy(&name1,&pData1[index],100) ;
+        index+=100 ;
+        string name(name1,100);
+        name=delUnnecessary(name) ;
+        //name[name.length()]=NULL;
+
+        RealSenseID::Faceprints    *pFP =new RealSenseID::Faceprints();
+        memcpy(pFP,&pData1[index],sizeof(RealSenseID::Faceprints)) ;
+        index+=sizeof(RealSenseID::Faceprints) ;
+       
+        s_user_faceprint_db[name].data=pFP->data;
+    }
+
+ 
+
+    int iii=0;
+    }
+    catch(const std::exception& e)
+    {
+         addLog(" loadFaces exception");
+        std::cerr << e.what() << '\n';
+        return 0 ; 
+    }
+   
+   return 1;
+
+   
+
+
+}
+void threadTasks( )
+{
+	char *pBuffer=new char[MAX_LEN] ; 
+	
+    while(1)
+    {
+		try
+		{
+				
+		Csocket = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
+		if (Csocket < 0)
+		{
+			addLog("socket creation failed");
+			closesocket(Csocket);
+			continue;
+		}
+		
+		// Server address construction
+		struct sockaddr_in sad;
+		memset(&sad, 0, sizeof(sad));
+		sad.sin_family = AF_INET;
+		sad.sin_addr.s_addr = inet_addr(ipOmni); // server IP
+		sad.sin_port = htons(portOmni);                       // Server port
+		// Connection to the server
+		 addLog(" going to connect...");
+		if (connect(Csocket, (struct sockaddr*)&sad, sizeof(sad)) < 0)
+		{
+			addLog("Failed to connect.\n");
+			closesocket(Csocket);
+		
+		}
+		struct timeval tv;
+		tv.tv_sec = 1;
+		tv.tv_usec = 0;
+		setsockopt(Csocket, SOL_SOCKET, SO_RCVTIMEO, (const char*)&tv, sizeof tv);
+			
+        while(1)
+		{
+			int bytesRcvd;
+			int totalBytesRcvd = 0;
+			if ((bytesRcvd = recv(Csocket, pBuffer, MAX_LEN - 1, 0)) <= 0)
+			{
+			  std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
+			  std::chrono::duration<double>  n=now - lastGetFile ;
+			  double count =n.count();
+			  int nRcSend =1 ; 
+			  if(count>10)
+			  {
+				string s1("REALSENSE_GET_FILE"+g_lastFileInfo) ;
+				nRcSend=tcp_send((char *)s1.c_str(),s1.length()) ; 
+				if(!nRcSend)  
+					closesocket(Csocket);
+				lastGetFile = std::chrono::steady_clock::now(); 
+
+			  }
+			  if(!nRcSend)
+				  break ;
+			  
+			 
+			
+			}	
+            if(bytesRcvd<=0) 
+            continue ;
+
+			string s(pBuffer,bytesRcvd) ;
+            if(s[0]==77)
+            {
+                int index=1;
+                g_lastFileInfo="";
+                while(index<bytesRcvd)
+                {
+
+                   if(s[index]=='@')
+                        break;
+                   g_lastFileInfo+=pBuffer[index++] ;
+                }
+                index++ ;
+                if(!loadFaces(&pBuffer[index],(bytesRcvd-index)))
+                    g_lastFileInfo="0" ;
+
+
+                int iii=0;
+            }
+				
+		
+		}
+		}
+		catch(...)
+		{
+		
+		}
+    }
+	
+}
+
+
+
+
 
 void addLog( char *pErr)
 {
@@ -60,6 +228,7 @@ void ClearWinSock()
     WSACleanup();
 #endif
 }
+
 
 
 std::string buildJson(std::map<std::string, std::string>&  map)
@@ -95,380 +264,6 @@ void ErrorHandler(char* errorMessage)
 
 
 
-int sendTcp(const char* pUser)
-{
-
-        addLog(" send tcp 1");
-try
-{
-  //  char* ip = "192.168.0.64";
-//int port = 8093;
-//char* reader = "11";
-
-#if defined WIN32
-    WSADATA wsaData;
-    int iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
-    if (iResult != 0)
-    {
-        addLog("error at WSASturtup\n");
-        return 0;
-    }
-#endif
-
-        addLog(" send tcp 2");
-    // Socket creation
-    int Csocket;
-    Csocket = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
-    if (Csocket < 0)
-    {
-		addLog("socket creation failed");
-        ErrorHandler("socket creation failed.\n");
-        closesocket(Csocket);
-        ClearWinSock();
-        return 0;
-    }
-
-        addLog(" send tcp 333");
-    // Server address construction
-    struct sockaddr_in sad;
-     addLog(" send tcp 3.1");
-    memset(&sad, 0, sizeof(sad));
-    sad.sin_family = AF_INET;
-    sad.sin_addr.s_addr = inet_addr(ipOmni); // server IP
-    sad.sin_port = htons(portOmni);                       // Server port
-    // Connection to the server
-     addLog(" going to connect...");
-    if (connect(Csocket, (struct sockaddr*)&sad, sizeof(sad)) < 0)
-    {
-		addLog("Failed to connect.\n");
-        ErrorHandler("Failed to connect.\n");
-        closesocket(Csocket);
-        ClearWinSock();
-        return 0;
-    }
- addLog(" send tcp 4");
-   //@ char* inputString = "prova"; // String to send
-
-    std::map<std::string, std::string> map;
-    map["cmd"] = "Vision";
-    map["badgeName"] = pUser;
-    map["readerNeuron"] = readerOmni;
-    string json = buildJson(map);
- 
- addLog(" send tcp 3");
-    char* inputString = const_cast<char*>(json.c_str());
-
-    int stringLen = strlen(inputString);
- addLog(" send tcp 5");
-    if (send(Csocket, inputString, stringLen, 0) != stringLen)
-    {
-		addLog("send() sent a different number of bytes than expected");
-        ErrorHandler("send() sent a different number of bytes than expected");
-        closesocket(Csocket);
-        ClearWinSock();
-        return 0;
-    }
- addLog(" send tcp 6");
-    closesocket(Csocket);
-    ClearWinSock();
-	addLog("tcp sent succsfully");
-    return 1;
-
-    int bytesRcvd;
-    int totalBytesRcvd = 0;
-    char buf[BUFFERSIZE]; // buffer for data from the server
-    printf("Received: "); // Setup to print the echoed string
-
-    while (totalBytesRcvd < stringLen)
-    {
-        if ((bytesRcvd = recv(Csocket, buf, BUFFERSIZE - 1, 0)) <= 0)
-        {
-            ErrorHandler("recv() failed or connection closed prematurely");
-            closesocket(Csocket);
-            ClearWinSock();
-            return 0;
-        }
-        totalBytesRcvd += bytesRcvd; // Keep tally of total bytes
-        buf[bytesRcvd] = '\0';       // Add \0 so printf knows where to stop
-        printf("%s", buf);           // Print the echo buffer
-    }
-    // Closing connection
-    closesocket(Csocket);
-    ClearWinSock();
-    printf("\n");
-    system("pause");
-    return (0);
-	}
-	catch(...)
-	{
-		addLog("excpetion in tcpsend");
-	}
-	
-}
-string  getFileTcpInfo( )
-{
-
-        addLog(" getFileTcpInfo 1");
-        int rc=0;
-try
-{
-  //  char* ip = "192.168.0.64";
-//int port = 8093;
-//char* reader = "11";
-
-#if defined WIN32
-    WSADATA wsaData;
-    int iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
-    if (iResult != 0)
-    {
-        addLog("error at WSASturtup\n");
-        return 0;
-    }
-#endif
-
-        addLog(" getFileTcpInfo 2");
-    // Socket creation
-    int Csocket;
-    Csocket = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
-    if (Csocket < 0)
-    {
-		addLog("socket creation failed");
-        ErrorHandler("socket creation failed.\n");
-        closesocket(Csocket);
-        ClearWinSock();
-        return "0";
-    }
-
-        addLog(" getFileTcpInfo 333");
-    // Server address construction
-    struct sockaddr_in sad;
-     addLog(" getFileTcpInfo 3.1");
-    memset(&sad, 0, sizeof(sad));
-    sad.sin_family = AF_INET;
-    sad.sin_addr.s_addr = inet_addr(ipOmni); // server IP
-    sad.sin_port = htons(portOmni);                       // Server port
-    // Connection to the server
-     addLog(" going to connect...");
-    if (connect(Csocket, (struct sockaddr*)&sad, sizeof(sad)) < 0)
-    {
-		addLog("Failed to connect.\n");
-        ErrorHandler("Failed to connect.\n");
-        closesocket(Csocket);
-        ClearWinSock();
-        return "0";
-    }
- addLog(" getFileTcpInfo 4");
-   //@ char* inputString = "prova"; // String to send
-
-    
- 
- addLog(" getFileTcpInfo 3");
-    char* inputString = const_cast<char*>("REALSENSE_FILE_INFO");
-
-    int stringLen = strlen(inputString);
- addLog(" getFileTcpInfo 5");
-    if (send(Csocket, inputString, stringLen, 0) != stringLen)
-    {
-		addLog("send() sent a different number of bytes than expected");
-        ErrorHandler("send() sent a different number of bytes than expected");
-        closesocket(Csocket);
-        ClearWinSock();
-        return "0";
-    }
- addLog(" getFileTcpInfo 6");
-
-int bytesRcvd;
-    int totalBytesRcvd = 0;
-    char buf[1000]; // buffer for data from the server
-    //printf("Received: "); // Setup to print the echoed string
-    struct timeval tv;
-    tv.tv_sec = 1;
-    tv.tv_usec = 0;
-    setsockopt(Csocket, SOL_SOCKET, SO_RCVTIMEO, (const char*)&tv, sizeof tv);
-
-
-    while (totalBytesRcvd < stringLen)
-    {
-        addLog(" getFileTcpInfo 7");
-        if ((bytesRcvd = recv(Csocket, buf, 1000 - 1, 0)) <= 0)
-        {
-            addLog(" getFileTcpInfo 8 error");
-            ErrorHandler("recv() failed or connection closed prematurely");
-            closesocket(Csocket);
-            ClearWinSock();
-
-            return "0";
-        }
-        addLog(" getFileTcpInfo 8.1");
-        totalBytesRcvd += bytesRcvd; // Keep tally of total bytes
-             // Add \0 so printf knows where to stop
-        if(buf[0]==0)
-        {
-            addLog(" getFileTcpInfo 9 error");
-            return "0";
-        }
-        string s(buf,bytesRcvd) ;
-        addLog(" getFileTcpInfo 8.2 good");
-        closesocket(Csocket);
-        ClearWinSock();
-        addLog(" getFileTcpInfo 10");
-        return s;
-
-          
-
-        
-    }
-    addLog(" getFileTcpInfo 12");
-    // Closing connection
-    closesocket(Csocket);
-    ClearWinSock();
-   // printf("\n");
-    //system("pause");
-    return "0";
-
-   
-    
-
-    
-	}
-	catch(...)
-	{
-		addLog(" getFileTcpInfo exception");
-	}
-    addLog(" getFileTcpInfo 15");
-    return "0" ;
-	
-}
-int getFileTcp(string info_current)
-{
-
-        addLog(" getFileTcp 1");
-try
-{
-  //  char* ip = "192.168.0.64";
-//int port = 8093;
-//char* reader = "11";
-
-#if defined WIN32
-    WSADATA wsaData;
-    int iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
-    if (iResult != 0)
-    {
-        addLog("error at WSASturtup\n");
-        return 0;
-    }
-#endif
-
-        addLog(" getFileTcp 2");
-    // Socket creation
-    int Csocket;
-    Csocket = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
-    if (Csocket < 0)
-    {
-		addLog("socket creation failed");
-        ErrorHandler("socket creation failed.\n");
-        closesocket(Csocket);
-        ClearWinSock();
-        return 0;
-    }
-
-        addLog(" getFileTcp 333");
-    // Server address construction
-    struct sockaddr_in sad;
-     addLog(" getFileTcp 3.1");
-    memset(&sad, 0, sizeof(sad));
-    sad.sin_family = AF_INET;
-    sad.sin_addr.s_addr = inet_addr(ipOmni); // server IP
-    sad.sin_port = htons(portOmni);                       // Server port
-    // Connection to the server
-     addLog(" going to connect...");
-    if (connect(Csocket, (struct sockaddr*)&sad, sizeof(sad)) < 0)
-    {
-		addLog("Failed to connect.\n");
-        ErrorHandler("Failed to connect.\n");
-        closesocket(Csocket);
-        ClearWinSock();
-        return 0;
-    }
- addLog(" getFileTcp 4");
-   //@ char* inputString = "prova"; // String to send
-
-    
- 
- addLog(" getFileTcp 3");
-    char* inputString = const_cast<char*>("REALSENSE_GET_FILE");
-
-    int stringLen = strlen(inputString);
- addLog(" getFileTcp 5");
-    if (send(Csocket, inputString, stringLen, 0) != stringLen)
-    {
-		addLog("send() sent a different number of bytes than expected");
-        ErrorHandler("send() sent a different number of bytes than expected");
-        closesocket(Csocket);
-        ClearWinSock();
-        return 0;
-    }
- addLog(" getFileTcp 6");
-
-int bytesRcvd;
-    int totalBytesRcvd = 0;
-    char buf[500000]; // buffer for data from the server
-    printf("Received: "); // Setup to print the echoed string
-
-   
-    while (totalBytesRcvd < stringLen)
-    {
-        addLog(" getFileTcp 77");
-        if ((bytesRcvd = recv(Csocket, buf, 500000 - 1, 0)) <= 0)
-        {
-            addLog(" getFileTcp 88  error");
-            ErrorHandler("recv() failed or connection closed prematurely");
-            closesocket(Csocket);
-            ClearWinSock();
-            return 0;
-        }
-        totalBytesRcvd += bytesRcvd; // Keep tally of total bytes
-             // Add \0 so printf knows where to stop
-         addLog(" getFileTcp 7");
-        if(buf[0]==77)
-        {
-            addLog(" getFileTcp 8");
-            remove( g_filePath.c_str() );
-            ofstream MyFile((const char *)g_filePath.c_str(),std::ios::binary);
-            MyFile.write(&buf[1],bytesRcvd-1) ;
-
-            // Close the file
-            MyFile.close();
-            g_lastFileInfo=info_current ; 
-             addLog(" getFileTcp 9");
-            loadFile(g_filePath);
-             addLog(" getFileTcp 10");
-
-        }
-       
-
-
-        
-    }
-    // Closing connection
-    closesocket(Csocket);
-    ClearWinSock();
-   // printf("\n");
-    //system("pause");
-     addLog(" getFileTcp 11");
-    return (0);
-
-   
-    return 1;
-
-    
-	}
-	catch(...)
-	{
-		addLog("excpetion in tcpsend");
-	}
-	
-}
 // Create FaceAuthenticator (after successfully connecting it to the device).
 // If failed to connect, exit(1)
 std::unique_ptr<RealSenseID::FaceAuthenticator> CreateAuthenticator(const RealSenseID::SerialConfig& serial_config)
@@ -478,7 +273,7 @@ std::unique_ptr<RealSenseID::FaceAuthenticator> CreateAuthenticator(const RealSe
     if (connect_status != RealSenseID::Status::Ok)
     {
         std::cout << "Failed connecting to port " << serial_config.port << " status:" << connect_status << std::endl;
-        std::exit(1);
+        //std::exit(1);
     }
     std::cout << "Connected to device" << std::endl;
     return authenticator;
@@ -552,17 +347,7 @@ public:
     void OnResult(const RealSenseID::AuthenticateStatus status, const RealSenseID::ExtractedFaceprints* faceprints) override
     {
      
-      std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
-      std::chrono::duration<double>  n=now - lastGetFile ;
-      double count =n.count();
-      if(count>5)
-      {
-        string sInfo=getFileTcpInfo() ;
-         if(sInfo!="0"  && g_lastFileInfo!=sInfo)
-             getFileTcp(sInfo) ;
-        lastGetFile = std::chrono::steady_clock::now(); 
-
-      }
+    
      
 
         std::cout << "on_result: status: " << status << std::endl;
@@ -633,7 +418,7 @@ public:
                 // apply adaptive update
                 s_user_faceprint_db[winning_id_str] = winning_updated_faceprints; 
                 std::cout << "DB adaptive apdate applied to user = " << winning_id_str << "." << std::endl;
-                auto futureFunction= std::async(sendTcp,winning_id_str.c_str());
+               // auto futureFunction= std::async(sendTcp,winning_id_str.c_str());
    
             }
         }
@@ -711,74 +496,6 @@ string delUnnecessary(string &str)
 }
 
   
-
-void loadFile(string path)
-{
-    char *pData1 = NULL ; 
-    try
-    {
-
-     addLog(" loadFile 1");
-   /* for(std::map<std::string,RealSenseID::Faceprints*>::iterator itr = s_user_faceprint_db.data.begin(); itr != s_user_faceprint_db.end(); itr++)
-    {
-        delete (itr->second);
-    }*/
-    s_user_faceprint_db.clear();
-
-
-    std::fstream fh;
-    string fileName(path) ;
-   
-    fh.open(fileName, std::fstream::in | std::fstream::binary);
-    if(!fh)
-    {
-         addLog(" loadFile 2  error not open");
-        return ;
-    } 
-
-    int numberOfUsers =0;
-   
-    int nSize=fileSize(fileName.c_str()) ;
-
-    pData1=new char[nSize+10] ;
-    fh.read((char*)&pData1[0], nSize);
-    fh.close() ; 
-    memcpy(&numberOfUsers,&pData1[0],4);
-    
-    int index=4; 
-    for(int i=0;i<numberOfUsers;i++)
-    {
-        char name1[100] ;
-        memcpy(&name1,&pData1[index],100) ;
-        index+=100 ;
-        string name(name1,100);
-        name=delUnnecessary(name) ;
-        //name[name.length()]=NULL;
-
-        RealSenseID::Faceprints    *pFP =new RealSenseID::Faceprints();
-        memcpy(pFP,&pData1[index],sizeof(RealSenseID::Faceprints)) ;
-        index+=sizeof(RealSenseID::Faceprints) ;
-       
-        s_user_faceprint_db[name].data=pFP->data;
-    }
-
-    //fh.read((char*)&my, sizeof(my));
- addLog(" loadFile 4");
-
-    int iii=0;
-    }
-    catch(const std::exception& e)
-    {
-         addLog(" loadFile exception");
-        std::cerr << e.what() << '\n';
-    }
-    if(pData1)
-        delete pData1 ; 
-
-   addLog(" loadFile 5");
-
-
-}
 #include <unistd.h>
 #define GetCurrentDir getcwd
 
@@ -811,6 +528,10 @@ int main(int argc, char *argv[])
         strcpy(usbPort,"/dev/ttyACM0");
     }
   
+  
+	std::thread(threadTasks).detach();
+	
+  
     char cCurrentPath[FILENAME_MAX];
 
     if (!GetCurrentDir(cCurrentPath, sizeof(cCurrentPath)))
@@ -839,12 +560,14 @@ int main(int argc, char *argv[])
     //enroll_faceprints(config, "my-username");
    while(1)
    {
-    authenticate_faceprints(config);   
+    authenticate_faceprints(config);  
+    int iii=0; 
    
    } 
    }
     catch(...)
 	{
+        int iii=0;
 	}
 
 }
