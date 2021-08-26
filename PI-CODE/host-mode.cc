@@ -38,7 +38,7 @@ char usbPort[200];
 using namespace std;
 
 #include <chrono>
-std::chrono::steady_clock::time_point lastGetFile = std::chrono::steady_clock::now();
+std::chrono::steady_clock::time_point lastPollTime = std::chrono::steady_clock::now();
 
 void loadFile(string path);
 string delUnnecessary(string &str);
@@ -59,11 +59,17 @@ std::mutex mutexShared;
 int Csocket=0;
 int tcp_send(char *pBuffer,int len)
 {
-	int n=send(Csocket, pBuffer, len, 0) ; 
+    addLog("enter tcp_send()") ;
+    string s(pBuffer,len) ;
+    addLog("buffer=") ;
+    addLog((char *)s.c_str());
+	int n=send(Csocket, pBuffer, len, MSG_NOSIGNAL) ; 
 	if (n != len)
     {
+          addLog("error sending") ;
 		  return 0;
     }
+    addLog("send ok") ;
 	return 1; 
 	
 }
@@ -88,7 +94,7 @@ int loadFaces(char *pData1,int len)
     int index=4; 
     for(int i=0;i<numberOfUsers;i++)
     {
-        char name1[100] ;
+        char name1[101] ;
         memcpy(&name1,&pData1[index],100) ;
         index+=100 ;
         string name(name1,100);
@@ -119,6 +125,23 @@ int loadFaces(char *pData1,int len)
 
 
 }
+int  sendGetFileReq() 
+{
+    int nRcSend=0;
+string s1("REALSENSE_GET_FILE"+g_lastFileInfo) ;
+				addLog("going to send") ;
+                nRcSend=tcp_send((char *)s1.c_str(),s1.length()) ; 
+                
+				if(!nRcSend)  
+				{
+                    addLog("error send closing socket") ;
+                    closesocket(Csocket);
+                }
+              
+                		 
+                addLog("after send") ;
+                return nRcSend;
+}
 void threadTasks( )
 {
 	char *pBuffer=new char[MAX_LEN] ; 
@@ -148,42 +171,47 @@ void threadTasks( )
 		{
 			addLog("Failed to connect.\n");
 			closesocket(Csocket);
+            continue;
 		
 		}
 		struct timeval tv;
 		tv.tv_sec = 1;
 		tv.tv_usec = 0;
 		setsockopt(Csocket, SOL_SOCKET, SO_RCVTIMEO, (const char*)&tv, sizeof tv);
-			
+		
         while(1)
 		{
-			int bytesRcvd;
+            addLog("going to check recv()") ;
+			int bytesRcvd=0;
 			int totalBytesRcvd = 0;
-			if ((bytesRcvd = recv(Csocket, pBuffer, MAX_LEN - 1, 0)) <= 0)
-			{
-			  std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
-			  std::chrono::duration<double>  n=now - lastGetFile ;
-			  double count =n.count();
-			  int nRcSend =1 ; 
-			  if(count>10)
-			  {
-				string s1("REALSENSE_GET_FILE"+g_lastFileInfo) ;
-				nRcSend=tcp_send((char *)s1.c_str(),s1.length()) ; 
-				if(!nRcSend)  
-					closesocket(Csocket);
-				lastGetFile = std::chrono::steady_clock::now(); 
+            
+			bytesRcvd = recv(Csocket, pBuffer, MAX_LEN - 1,0 );
+		    addLog("after recv()") ;
+		    addLog("after recv 2()") ;
+            std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
+            std::chrono::duration<double>  n=now - lastPollTime ;
+            double count =n.count();
+            int nRcSend =1 ;
 
-			  }
-			  if(!nRcSend)
-				  break ;
-			  
-			 
-			
-			}	
-            if(bytesRcvd<=0) 
-            continue ;
+            if(count>1)
+            {
+                nRcSend=sendGetFileReq() ;
+                lastPollTime = std::chrono::steady_clock::now();
+            }
+            if(!nRcSend)      addLog("!nRcSend   breaking") ;
 
+            if(!nRcSend)                    
+                break ;
+            if(bytesRcvd<=2) 
+            {
+                    addLog("got no data") ;
+                    continue ;
+            }
+             
 			string s(pBuffer,bytesRcvd) ;
+            addLog("got data=>" ) ;
+            addLog((char *)s.c_str() ) ;
+             
             if(s[0]==77)
             {
                 int index=1;
@@ -198,7 +226,7 @@ void threadTasks( )
                 index++ ;
                 if(!loadFaces(&pBuffer[index],(bytesRcvd-index)))
                     g_lastFileInfo="0" ;
-
+                                  
 
                 int iii=0;
             }
@@ -208,7 +236,7 @@ void threadTasks( )
 		}
 		catch(...)
 		{
-		
+            addLog("exception in thread");
 		}
     }
 	
@@ -263,20 +291,20 @@ void ErrorHandler(char* errorMessage)
 }
 
 
-
+std::unique_ptr<RealSenseID::FaceAuthenticator> g_authenticator = std::make_unique<RealSenseID::FaceAuthenticator>();
+  
 // Create FaceAuthenticator (after successfully connecting it to the device).
 // If failed to connect, exit(1)
-std::unique_ptr<RealSenseID::FaceAuthenticator> CreateAuthenticator(const RealSenseID::SerialConfig& serial_config)
+int CreateAuthenticator(const RealSenseID::SerialConfig& serial_config)
 {
-    auto authenticator = std::make_unique<RealSenseID::FaceAuthenticator>();
-    auto connect_status = authenticator->Connect(serial_config);
+    auto connect_status = g_authenticator->Connect(serial_config);
     if (connect_status != RealSenseID::Status::Ok)
     {
         std::cout << "Failed connecting to port " << serial_config.port << " status:" << connect_status << std::endl;
-        //std::exit(1);
+        return 0;
     }
     std::cout << "Connected to device" << std::endl;
-    return authenticator;
+    return 1;
 }
 
 // extract faceprints for new enrolled user
@@ -328,9 +356,11 @@ public:
 
 void enroll_faceprints(const RealSenseID::SerialConfig& serial_config, const char* user_id)
 {
-    auto authenticator = CreateAuthenticator(serial_config);
+    int nRc = CreateAuthenticator(serial_config);
+    if(!nRc)
+        return ; 
     EnrollClbk enroll_clbk {user_id};
-    auto status = authenticator->ExtractFaceprintsForEnroll(enroll_clbk);
+    auto status = g_authenticator->ExtractFaceprintsForEnroll(enroll_clbk);
     std::cout << "Status: " << status << std::endl << std::endl;
 }
 
@@ -446,10 +476,12 @@ public:
 
 void authenticate_faceprints(const RealSenseID::SerialConfig& serial_config)
 {
-    auto authenticator = CreateAuthenticator(serial_config);
-    FaceprintsAuthClbk clbk(authenticator.get());
+    int nRc = CreateAuthenticator(serial_config);
+    if(!nRc)
+        return ; 
+    FaceprintsAuthClbk clbk(g_authenticator.get());
     // extract faceprints of the user in front of the device
-    auto status = authenticator->ExtractFaceprintsForAuth(clbk);
+    auto status = g_authenticator->ExtractFaceprintsForAuth(clbk);
     if (status != RealSenseID::Status::Ok)
         std::cout << "Status: " << status << std::endl << std::endl;
 
@@ -560,7 +592,7 @@ int main(int argc, char *argv[])
     //enroll_faceprints(config, "my-username");
    while(1)
    {
-    authenticate_faceprints(config);  
+    //authenticate_faceprints(config);  
     int iii=0; 
    
    } 
