@@ -36,7 +36,7 @@ char readerOmni[50] ;
 char usbPort[200]; 
 
 using namespace std;
-
+int connect_tcp();
 #include <chrono>
 std::chrono::steady_clock::time_point lastPollTime = std::chrono::steady_clock::now();
 
@@ -56,21 +56,40 @@ void addLog( char *pErr) ;
 std::mutex mutexShared;
 #define MAX_LEN 100000
 
-int Csocket=0;
+
 int tcp_send(char *pBuffer,int len)
 {
-    addLog("enter tcp_send()") ;
-    string s(pBuffer,len) ;
-    addLog("buffer=") ;
-    addLog((char *)s.c_str());
-	int n=send(Csocket, pBuffer, len, MSG_NOSIGNAL) ; 
-	if (n != len)
-    {
-          addLog("error sending") ;
-		  return 0;
-    }
-    addLog("send ok") ;
-	return 1; 
+    int socket3 ; 
+    socket3=connect_tcp() ;
+    if(socket3==-1)
+        return 0 ;
+
+        
+        addLog("enter tcp_send()") ;
+        string s(pBuffer,len) ;
+        addLog("buffer=") ;
+        addLog((char *)s.c_str());
+        int n=send(socket3, pBuffer, len, MSG_NOSIGNAL) ; 
+        closesocket(socket3);
+        if (n != len)
+        {
+            addLog("error sending") ;
+            return 0;
+           
+        }
+        else
+        {
+
+            addLog("send ok") ;
+            return 1; 
+        }
+        
+     
+        closesocket(socket3);
+       
+            
+    
+   return 0 ; 
 	
 }
 int loadFaces(char *pData1,int len)
@@ -79,7 +98,7 @@ int loadFaces(char *pData1,int len)
     try
     {
 
-       s_user_faceprint_db.clear();
+    s_user_faceprint_db.clear();
 
 
     
@@ -125,38 +144,18 @@ int loadFaces(char *pData1,int len)
 
 
 }
-int  sendGetFileReq() 
+
+int connect_tcp()
 {
-    int nRcSend=0;
-string s1("REALSENSE_GET_FILE"+g_lastFileInfo) ;
-				addLog("going to send") ;
-                nRcSend=tcp_send((char *)s1.c_str(),s1.length()) ; 
-                
-				if(!nRcSend)  
-				{
-                    addLog("error send closing socket") ;
-                    closesocket(Csocket);
-                }
-              
-                		 
-                addLog("after send") ;
-                return nRcSend;
-}
-void threadTasks( )
-{
-	char *pBuffer=new char[MAX_LEN] ; 
-	
-    while(1)
-    {
-		try
-		{
-				
-		Csocket = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
-		if (Csocket < 0)
+    int socket1=0;
+        addLog("going to connect_tcp") ;
+    	closesocket((int)socket1);
+        socket1 =socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
+		if (socket1 < 0)
 		{
 			addLog("socket creation failed");
-			closesocket(Csocket);
-			continue;
+			closesocket((int)socket1);
+			return 0;
 		}
 		
 		// Server address construction
@@ -167,41 +166,53 @@ void threadTasks( )
 		sad.sin_port = htons(portOmni);                       // Server port
 		// Connection to the server
 		 addLog(" going to connect...");
-		if (connect(Csocket, (struct sockaddr*)&sad, sizeof(sad)) < 0)
+		if (connect((int)socket1, (struct sockaddr*)&sad, sizeof(sad)) < 0)
 		{
 			addLog("Failed to connect.\n");
-			closesocket(Csocket);
-            continue;
+			closesocket((int)socket1);
+            return -1;
 		
 		}
+
 		struct timeval tv;
 		tv.tv_sec = 1;
 		tv.tv_usec = 0;
-		setsockopt(Csocket, SOL_SOCKET, SO_RCVTIMEO, (const char*)&tv, sizeof tv);
-		
+		setsockopt((int)socket1, SOL_SOCKET, SO_RCVTIMEO, (const char*)&tv, sizeof tv);
+		addLog(" succesfully connected! ");
+        return socket1 ;
+
+  
+}
+void threadTasks( )
+{
+	char *pBuffer=new char[MAX_LEN] ; 
+	
+    while(1)
+    {
+		try
+		{
+       
+
+		int socket2=0;
         while(1)
 		{
+            closesocket(socket2) ;
+            sleep(1) ;
+            socket2=connect_tcp() ;
+            if(socket2==-1) continue ;
+
+            string s1("REALSENSE_GET_FILE"+g_lastFileInfo) ;
+			addLog("going to send") ;
+            int n=send(socket2, s1.c_str(),s1.length(), MSG_NOSIGNAL) ; 
+            if(n<=0)
+                    continue ;
+            
             addLog("going to check recv()") ;
 			int bytesRcvd=0;
 			int totalBytesRcvd = 0;
             
-			bytesRcvd = recv(Csocket, pBuffer, MAX_LEN - 1,0 );
+			bytesRcvd = recv(socket2, pBuffer, MAX_LEN - 1,0 );
 		    addLog("after recv()") ;
-		    addLog("after recv 2()") ;
-            std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
-            std::chrono::duration<double>  n=now - lastPollTime ;
-            double count =n.count();
-            int nRcSend =1 ;
-
-            if(count>1)
-            {
-                nRcSend=sendGetFileReq() ;
-                lastPollTime = std::chrono::steady_clock::now();
-            }
-            if(!nRcSend)      addLog("!nRcSend   breaking") ;
-
-            if(!nRcSend)                    
-                break ;
             if(bytesRcvd<=2) 
             {
                     addLog("got no data") ;
@@ -211,7 +222,7 @@ void threadTasks( )
 			string s(pBuffer,bytesRcvd) ;
             addLog("got data=>" ) ;
             addLog((char *)s.c_str() ) ;
-             
+            
             if(s[0]==77)
             {
                 int index=1;
@@ -224,12 +235,20 @@ void threadTasks( )
                    g_lastFileInfo+=pBuffer[index++] ;
                 }
                 index++ ;
+                addLog("before loading faces" ) ;
                 if(!loadFaces(&pBuffer[index],(bytesRcvd-index)))
-                    g_lastFileInfo="0" ;
+                 {
+                     addLog("new faces were updated!!" ) ;
+                     g_lastFileInfo="0" ;
+                 }
                                   
 
-                int iii=0;
+                
             }
+            continue ;
+
+
+		    
 				
 		
 		}
@@ -240,6 +259,95 @@ void threadTasks( )
 		}
     }
 	
+}
+
+void getFileIfNeeded()
+{
+	char buf[MAX_LEN] ; 
+	int socket2=0;
+  
+    std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
+    std::chrono::duration<double>  n=now - lastPollTime ;
+    double count =n.count();
+    int nRcSend =1 ;
+
+    if(count<1)
+        return ;
+
+    lastPollTime=now ;
+
+		try
+		{
+       
+            socket2=connect_tcp() ;
+            if(socket2==-1) return ;
+
+            string s1("REALSENSE_GET_FILE"+g_lastFileInfo) ;
+			addLog("going to send") ;
+            int n=send(socket2, s1.c_str(),s1.length(), MSG_NOSIGNAL) ; 
+            if(n<=0)
+                    return ;
+            
+            addLog("going to check recv()") ;
+			int bytesRcvd=0;
+			int totalBytesRcvd = 0;
+            
+			bytesRcvd = recv(socket2, buf, MAX_LEN - 1,0 );
+            
+		    addLog("after recv()") ;
+          
+            if(bytesRcvd<=2) 
+            {
+              
+                    addLog("got no data") ;
+                    closesocket(socket2) ;
+                    return;
+                    
+            }
+           
+			//string s(buf,bytesRcvd) ;
+            addLog("got data=>" ) ;
+            //addLog((char *)s.c_str() ) ;
+            //  return ;
+            if(buf[0]==77)
+            {
+                int index=1;
+                g_lastFileInfo="";
+               
+                while(index<bytesRcvd)
+                {
+
+                   if(buf[index]=='@')
+                        break;
+                   g_lastFileInfo+=buf[index++] ;
+                }
+                index++ ; 
+                int len=bytesRcvd-index;
+                addLog("before loading faces" ) ;
+                 if(!loadFaces(&buf[index],len))
+                 {
+                     addLog("new faces were updated!!" ) ;
+                     g_lastFileInfo="0" ;
+                 }
+                                  
+
+                
+            }
+           // closesocket(socket2) ;
+
+
+		    
+				
+		
+		
+		}
+		catch(...)
+		{
+            addLog("exception in thread");
+		}
+    
+	    // closesocket(socket2) ;
+
 }
 
 
@@ -363,7 +471,16 @@ void enroll_faceprints(const RealSenseID::SerialConfig& serial_config, const cha
     auto status = g_authenticator->ExtractFaceprintsForEnroll(enroll_clbk);
     std::cout << "Status: " << status << std::endl << std::endl;
 }
+void sendOmniFaceDetected(string faceDetected)
+{
+    std::map<std::string, std::string> map;
+    map["cmd"] = "Vision";
+    map["badgeName"] = faceDetected;
+    map["readerNeuron"] = readerOmni;
+    string json = buildJson(map);
+    tcp_send((char *)json.c_str(),json.length()) ;
 
+}
 // authenticate with faceprints
 class FaceprintsAuthClbk : public RealSenseID::AuthFaceprintsExtractionCallback
 {
@@ -378,7 +495,9 @@ public:
     {
      
     
-     
+        getFileIfNeeded() ;
+       
+        
 
         std::cout << "on_result: status: " << status << std::endl;
 
@@ -441,6 +560,8 @@ public:
 
         if(winning_index >= 0) // we have a winner so declare success!
         {
+            addLog("--- FACE DETECTED  ----- ") ;
+            sendOmniFaceDetected(winning_id_str) ; 
             std::cout << "\n******* Match success. user_id: " << winning_id_str << " *******\n" << std::endl;
             // apply adaptive-update on the db.
             if (winning_match_result.should_update)
@@ -561,7 +682,7 @@ int main(int argc, char *argv[])
     }
   
   
-	std::thread(threadTasks).detach();
+	//std::thread(threadTasks).detach();
 	
   
     char cCurrentPath[FILENAME_MAX];
@@ -592,7 +713,7 @@ int main(int argc, char *argv[])
     //enroll_faceprints(config, "my-username");
    while(1)
    {
-    //authenticate_faceprints(config);  
+    authenticate_faceprints(config);  
     int iii=0; 
    
    } 
